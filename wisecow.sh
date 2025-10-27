@@ -13,7 +13,6 @@ handleRequest() {
 	mod=`fortune`
 cat <<EOF > $RSPFILE
 HTTP/1.1 200
-<h3>CI/CD Test Deployment</h3>
 <pre>`cowsay $mod`</pre>
 EOF
 }
