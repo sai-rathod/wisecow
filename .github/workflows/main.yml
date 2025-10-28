@@ -7,6 +7,7 @@ on:
     paths-ignore:
     - ".github/workflows/**"
     - "README.md"
+    - "./k8s/**"
 
 jobs:
   build-and-push:
@@ -23,3 +24,23 @@ jobs:
       run: |
         docker build -t ${{ secrets.DOCKERUSER }}/wisecow:latest .
         docker push ${{ secrets.DOCKERUSER }}/wisecow:latest
+  pushing-changes:
+    needs: [build-and-push]
+    runs-on: ubuntu-latest
+    steps:
+    - name: installing yq
+      run: |
+        wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/local/bin/yq
+        chmod +x /usr/local/bin/yq
+    - name: storing the commit and adding
+      run: |
+        COMMIT_SHA="${GITHUB_SHA::7}"
+        yq eval ".spec.template.metadata.labels.tag = \"$COMMIT_SHA\"" -i k8s/deployment.yaml
+    - name: git push
+      run: |
+        git config user.name ${{ secrets.GIT_USER }}
+        git config user.email ${{ secrets.GIT_EMAIl }}
+        git add k8s/deployment.yml
+        git commit -m "tag: ${GITHUB_SHA::7}"
+        git push origin main
+  
