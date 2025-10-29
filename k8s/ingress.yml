@@ -20,5 +20,5 @@ spec:
               service:
                 name: wisecow-service
                 port:
-                  number: 4499
+                  number: 443
 
