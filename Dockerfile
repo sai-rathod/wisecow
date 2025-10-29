@@ -1,5 +1,4 @@
 FROM ubuntu:latest
-# testing line
 RUN apt-get update && \
     apt-get install -y fortune-mod cowsay netcat-openbsd && \
     apt-get clean && \
