@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wisecow-con
-          image: sairathod/wisecow:1.0.3
+          image: sairathod/wisecow:1.0.4
           resources:
             requests:
               memory: "128Mi"
