@@ -13,17 +13,17 @@ spec:
       name: wisecow-pod
       labels:
         app: wisecow
-        tag: initial
+        tag: d296eab
     spec:
       containers:
-      - name: wisecow-con
-        image: sairathod/wisecow:latest
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "250m"
-        ports:
-        - containerPort: 4499
+        - name: wisecow-con
+          image: sairathod/wisecow:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 4499
