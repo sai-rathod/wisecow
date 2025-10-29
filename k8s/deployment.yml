@@ -13,7 +13,7 @@ spec:
       name: wisecow-pod
       labels:
         app: wisecow
-        tag: "0cbff53"
+        tag: "35f4bd0"
     spec:
       containers:
         - name: wisecow-con
