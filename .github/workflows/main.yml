@@ -28,6 +28,10 @@ jobs:
     needs: [build-and-push]
     runs-on: ubuntu-latest
     steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: installing yq
       run: |
         wget https://github.com/mikefarah/yq/releases/download/v4.35.1/yq_linux_amd64 -O /usr/local/bin/yq
@@ -35,11 +39,11 @@ jobs:
     - name: storing the commit and adding
       run: |
         COMMIT_SHA="${GITHUB_SHA::7}"
-        yq eval ".spec.template.metadata.labels.tag = \"$COMMIT_SHA\"" -i k8s/deployment.yaml
+        yq eval ".spec.template.metadata.labels.tag = \"$COMMIT_SHA\"" -i k8s/deployment.yml
     - name: git push
       run: |
         git config user.name ${{ secrets.GIT_USER }}
-        git config user.email ${{ secrets.GIT_EMAIl }}
+        git config user.email ${{ secrets.GIT_EMAIL }}
         git add k8s/deployment.yml
         git commit -m "tag: ${GITHUB_SHA::7}"
         git push origin main
