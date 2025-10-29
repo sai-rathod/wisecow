@@ -13,11 +13,10 @@ spec:
       name: wisecow-pod
       labels:
         app: wisecow
-        tag: "b450123"
     spec:
       containers:
         - name: wisecow-con
-          image: sairathod/wisecow:latest
+          image: sairathod/wisecow:1.0.0
           resources:
             requests:
               memory: "128Mi"
