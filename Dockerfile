@@ -5,6 +5,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV PATH="${PATH}:/usr/games"
+# path
 
 COPY wisecow.sh /app/wisecow.sh
 
