@@ -1,6 +1,8 @@
 # WiseCow Application - CI/CD Pipeline
 
 A bash script-based WiseCow application with fully automated CI/CD pipeline using GitHub Actions and ArgoCD, deployed on MicroK8s cluster running on AWS EC2.
+# Projects Demo:
+*https://drive.google.com/drive/folders/1vJsEW6G0zRcV1TRl2dKbPCRdoi0ELrbJ?usp=sharing*
 
 ## 🏗️ Architecture Overview
 
